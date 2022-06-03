@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # OWN
-    'app.apps.AppConfig'
+    'app.apps.AppConfig',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
+
+LOGIN_REDIRECT_URL = 'index'
+
+LOGOUT_REDIRECT_URL = 'login'
