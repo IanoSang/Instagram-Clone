@@ -8,67 +8,51 @@
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-3">
-                        <img class="rounded-circle account-img" src="{{ user.profile.profile_picture.url }}">
+                        <img class="rounded-circle account-img" src="{{ user_prof.profile.profile_pic.url }}">
                     </div>
                     <div class="col-md-6 mt-3">
                         <div class="media-body">
-                            <div class="account-heading"><span class="mr-3 text-secondary username">{{ user.username }}</span>
-                                <a class="btn btn-sm btn-outline-secondary mr-3" data-toggle="modal" data-target=".bd-example-modal-md"><strong>Edit Profile</strong></a>
-                                <a class="mt-3" data-toggle="modal" data-target="#ModalCenter"><i class="fa fa-cog mt-3" id="cog"></i></a>
-                            </div>
+                            <div class="account-heading">
+                                <span class="mr-3 text-secondary username">{{ user_prof.username }}</span>
+                                {% if follow_status %}
+                                <a class="btn btn-sm btn-outline-danger ml-5" href="{% url 'unfollow' user_prof.profile.id %}">Unfollow</a>
 
-                            <div class="post-details mt-3 mb-3">
-                                <span class="mr-5"><strong>{{images.count}}</strong> Posts</span>
-                                <span class="mr-5"> <strong>{{ user.profile.followers.count }}</strong> followers</span>
-                                <span class="mr-5"> <strong>{{ user.profile.following.count }}</strong> following</span>
+                                {%else%}
+
+                                <a class="btn btn-sm btn-primary ml-5" href="{% url 'follow' user_prof.profile.id %}">Follow</a>
+                                {% endif %}
+
+
                             </div>
-                            <h5>{{ user.profile.name }}</h5>
-                            <p class="text-secondary">{{ user.profile.bio }}</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade bd-example-modal-sm" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <a class="D-block mx-auto" href="">Change Password</a>
-                        <hr>
-                        <a class="D-block mx-auto" href="{% url 'logout' %}">Log Out</a>
-                        <hr>
-                        <a class="D-block mx-auto" href="" data-dismiss="modal">Close</a>
-                    </div>
 
-                </div>
-            </div>
-        </div>
-        <div class="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-md ">
-                <div class="modal-content">
-                    <form action="" method="post" novalidate enctype="multipart/form-data" class="mr-4 mt-4 ml-4 mb-4">
-                        {% csrf_token%}
-                        {{ user_form|crispy}}
-                        {{ prof_form|crispy}}
-                        <button type="submit" class="btn btn-primary btn-sm"> Update Profile</button>
-                    </form>
+                        <div class="post-details mt-3 mb-3">
+                            <span class="mr-5"><strong>{{user_posts.count}}</strong> Posts</span>
+                            <span class="mr-5"> <strong>{{ user_prof.profile.followers.count }}</strong> followers</span>
+                            <span class="mr-5"> <strong>{{ user_prof.profile.following.count }}</strong> following</span>
+                        </div>
+                        <h5>{{user_prof.profile.name }}</h5>
+                        <p class="text-secondary">{{ user_prof.profile.bio }}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <hr class="mt-4">
     <div class="card-columns">
-        {% for image in images %}
-            <div class="card">
-                <div class="card-body">
-                    <img src="{{image.image.url}}" alt="{{image.caption}}" class="card-img">
-                    <p id="overlay"class="text"> 
-                            <i class="fas fa-heart" style="color:white; font-size: 18"></i> 
-                            <span style="color: white">{{image.likes.count}}</span>
-                             <i class="fas fa-comment ml-4" style="color: white"></i> <span style="color: white">{{image.comments.count}}</span></p>
-                    
-                </div>
-            </div>
+        {% for image in user_posts %}
+        <div class="card">
+            <div class="card-body parent ">
+                <div class="im">
+                <img src="{{image.image.url}}" alt="{{image.caption}}" class="card-img">
+                <p id="overlay"class="text">
+                    <i class="fas fa-heart" style="color:white; font-size: 18"></i>
+                    <span style="color: white">{{image.likes.count}}</span>
+                     <i class="fas fa-comment ml-4" style="color: white"></i> <span style="color: white">{{image.comments.count}}</span></p>
+
+                    </div>
+                    </div>
+        </div>
         {% endfor %}
     </div>
 </div>
