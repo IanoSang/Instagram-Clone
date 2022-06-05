@@ -9,6 +9,7 @@ urlpatterns = [
     path('account/', include('django.contrib.auth.urls')),
     path('profile/<username>/', views.profile, name='profile'),
     path('user_profile/<username>/', views.user_profile, name='user_profile'),
+    path('post/<id>', views.comment, name='comment'),
 ]
 
 if settings.DEBUG:
