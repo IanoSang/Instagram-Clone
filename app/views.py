@@ -21,13 +21,13 @@ def index(request):
             return HttpResponseRedirect(request.path_info)
     else:
         form = PostForm()
-    params = {
+    context = {
         'images': images,
         'form': form,
         'users': users,
 
     }
-    return render(request, 'index.html', params)
+    return render(request, 'insta-pages/index.html', context)
 
 
 def signup(request):
@@ -58,13 +58,13 @@ def profile(request, username):
     else:
         user_form = UpdateUserForm(instance=request.user)
         prof_form = UpdateUserProfileForm(instance=request.user.profile)
-    params = {
+    context = {
         'user_form': user_form,
         'prof_form': prof_form,
         'images': images,
 
     }
-    return render(request, 'profile.html', params)
+    return render(request, 'insta-pages/profile.html', context)
 
 
 @login_required(login_url='login')
@@ -81,11 +81,11 @@ def user_profile(request, username):
             follow_status = True
         else:
             follow_status = False
-    params = {
+    context = {
         'user_prof': user_prof,
         'user_posts': user_posts,
         'followers': followers,
         'follow_status': follow_status
     }
     print(followers)
-    return render(request, 'user_profile.html', params)
+    return render(request, 'insta-pages/user_profile.html', context)
