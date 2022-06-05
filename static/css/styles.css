@@ -4,3 +4,15 @@
 .help-block: li{
     display:none;
 }
+.account-img {
+    height: 165px;
+    width: 165px;
+}
+.user-img {
+    height: 55px;
+    width: 55px;
+    margin-top:25px;
+}
+.form-text, .asteriskField{
+    display:none;
+}
