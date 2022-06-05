@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import SignUpForm, UpdateUserProfileForm, UpdateUserForm, PostForm
+from .forms import SignUpForm, UpdateUserProfileForm, UpdateUserForm, PostForm, CommentForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
@@ -89,3 +89,29 @@ def user_profile(request, username):
     }
     print(followers)
     return render(request, 'insta-pages/user_profile.html', context)
+
+
+@login_required(login_url='login')
+def comment(request, id):
+    image = get_object_or_404(Post, pk=id)
+    is_liked = False
+    if image.likes.filter(id=request.user.id).exists():
+        is_liked = True
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            savecomment = form.save(commit=False)
+            savecomment.post = image
+            savecomment.user = request.user.profile
+            savecomment.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = CommentForm()
+    context = {
+        'image': image,
+        'form': form,
+        'is_liked': is_liked,
+
+    }
+    return render(request, 'insta-pages/post.html', context)
+
