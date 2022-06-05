@@ -22,11 +22,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="ms-auto">
-                <div class="search">
+                <form class="search" id="searchform" action="{% url 'search' %}" >
                     <input
                     style="border: 1px solid #DBDBDB; background-color: #FAFAFA; height: 30.5px;width: 14.5rem ;border-radius: 3.5px;padding-left: 25px;"
-                        type="text" placeholder="Search">
-                </div>
+                       name="search_user" autocomplete="off" id="searching" type="text" placeholder="Search">
+                </form>
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
@@ -55,9 +55,6 @@
                         <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
                     </ul>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">Disabled</a>
-                </li> -->
             </ul>
         </div>
     </div>
