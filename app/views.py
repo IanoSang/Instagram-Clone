@@ -3,7 +3,7 @@ from .forms import SignUpForm, UpdateUserProfileForm, UpdateUserForm, PostForm, 
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-from .models import Follow, Post
+from .models import Follow, Post, Profile
 from django.contrib.auth.models import User
 
 
@@ -115,3 +115,18 @@ def comment(request, id):
     }
     return render(request, 'insta-pages/post.html', context)
 
+
+def unfollow(request, to_unfollow):
+    if request.method == 'GET':
+        user_profile2 = Profile.objects.get(pk=to_unfollow)
+        unfollow_d = Follow.objects.filter(follower=request.user.profile, followed=user_profile2)
+        unfollow_d.delete()
+        return redirect('user_profile', user_profile2.user.username)
+
+
+def follow(request, to_follow):
+    if request.method == 'GET':
+        user_profile3 = Profile.objects.get(pk=to_follow)
+        follow_s = Follow(follower=request.user.profile, followed=user_profile3)
+        follow_s.save()
+        return redirect('user_profile', user_profile3.user.username)
