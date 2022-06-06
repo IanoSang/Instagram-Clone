@@ -46,14 +46,14 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="{{ user.profile.profile_pic.url }}" alt="" style="viewBox="0 0 50 50"; width="50";></a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{% url 'profile' user.username %}"><img class="rounded-circle user-img" src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/30.User-128.png" alt=""> Profile</a></li>
                         <li><a class="dropdown-item" href="#"><img src="https://cdn0.iconfinder.com/data/icons/social-media-logo-4/32/Social_Media_instagram_save_save_instagram-128.png" alt="" style="viewBox="0 0 24 24"; width="16";> Saved</a></li>
                         <li><a class="dropdown-item" href="#"><img src="https://cdn3.iconfinder.com/data/icons/user-interface-798/32/User_interface_setting_gear_interface_ui_multimedia-128.png" alt="" style="viewBox="0 0 24 24"; width="16";> Setting</a></li>
                         <li><a class="dropdown-item" href="#"><img src="https://cdn4.iconfinder.com/data/icons/bold-purple-free-samples/32/Arrows_Refresh_Replace_Round_Circle-128.png" alt="" style="viewBox="0 0 24 24"; width="16";> Switch Accounts</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
-                    </ul>
+                     </ul>
                 </li>
             </ul>
         </div>
