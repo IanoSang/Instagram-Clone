@@ -41,22 +41,25 @@
     </div>
     <hr class="mt-4">
     <div class="card-columns">
-        {% for image in user_posts %}
-        <div class="card">
-            <div class="card-body parent ">
-                <div class="im">
-                    <img src="{{image.image.url}}" alt="{{image.caption}}" class="card-img">
-                    <p id="overlay" class="text">
-                        <i class="fas fa-heart" style="color:white; font-size: 18"></i>
-                        <span style="color: white">{{image.likes.count}}</span>
-                         <i class="fas fa-comment ml-4" style="color: white"></i> <span style="color: white">{{image.comments.count}}</span>
-                    </p>
 
+        <div class="card mb-5">
+            <div class="card-body parent ">
+                <div class="row">
+                    {% for image in user_posts %}
+                        <div class="col-sm-4">
+                            <img src="{{image.image.url}}" alt="{{image.caption}}" class="card-img">
+                                <p id="overlay" class="text">
+                                    <i class="fas fa-heart"></i>
+                                    <span>{{image.likes.count}}</span>
+                                     <i class="fas fa-comment ml-4"></i> <span style="color: black">{{image.comments.count}}</span>
+                                </p>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
             
         </div>
-        {% endfor %}
+
     </div>
 </div>
 
