@@ -13,18 +13,20 @@
                 <div class="card-title mt-4">
 
                 </div>
-                <div class="card-body mb-3 mr-3 ml-3">
-                    <form action="" method="post" novalidate>
+                <div class="card-body mb-3 mr-3 ml-3" >
+                        <a class="navbar-brand " id="login" href="#"><img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="">
+                        </a>
+                    <form action="" method="post" novalidate class="text-center">
                         {% csrf_token%}
                         {{ form|crispy}}
-                        <button type="submit" class="btn btn-primary btn-sm D-block mx-auto"> Log In</button>
+                        <button type="submit" class="btn btn-primary btn-sm D-block mt-3"> Log In</button>
                     </form>
                 </div>
                 <a href="" class="D-block mx-auto mb-3">Forgot password? </a>
             </div>
             <div class="card mt-2">
                 <div class="card-body mt-3 mb-3 mr-2 ml-4">
-                    Don't have an account? <a href="{% url 'signup' %}">Sign up</a>
+                    Don't have an account? <a class="mx-auto" href="{% url 'signup' %}">Sign up</a>
                 </div>
             </div>
             <div class="container" >
