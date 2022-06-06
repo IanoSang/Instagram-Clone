@@ -1,5 +1,20 @@
+body{
+background: #FAFAFA;
+}
+.sugg{
+background: #FAFAFA;
+}
 .help-block{
     display:none;
+}
+.user{
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+#navimg{
+    height: 35px;
+    width: 35px;
 }
 .help-block: li{
     display:none;
@@ -15,4 +30,36 @@
 }
 .form-text, .asteriskField{
     display:none;
+}
+.viewall a{
+    text-decoration:none;
+    color:grey;
+}
+.disc{
+    background-position: -458px -250px;
+    width: 24px;
+    height: 24px;
+}
+.like{
+    background-position: -458px -328px;
+    height: 24px;
+    width: 24px;
+    margin-left: 30px;
+}
+.pers{
+    background-position: -157px -357px;
+    height: 24px;
+    width: 24px;
+    margin-left: 30px;
+}
+.far, .fas{
+    font-size: 20px;
+    color: black;
+    padding: 10%
+}
+.view, .viewall, .allcomments{
+    margin-left: 5%;
+}
+.mx-auto{
+    text-decoration: none;
 }
