@@ -4,9 +4,8 @@ background: #FAFAFA;
 .sugg{
 background: #FAFAFA;
 }
-.help-block{
-    display:none;
-}
+
+
 .user{
     text-decoration: none;
     font-weight: bold;
@@ -62,4 +61,17 @@ background: #FAFAFA;
 }
 .mx-auto{
     text-decoration: none;
+}
+#login{
+    margin-left: 30%;
+}
+alert{
+    margin:0;
+    padding:0;
+}
+.alert ul li {
+    list-style-type: none;
+    padding:0;
+    margin:0;
+    font-size:12px;
 }
