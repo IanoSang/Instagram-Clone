@@ -6,35 +6,6 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-7">
-            <div class="row">
-                <button class="btn btn-sm btn-outline-primary ml-4 mb-3" data-toggle="modal" data-target="#imageUpload">
-                    Upload Image
-                </button>
-                <div class="modal fade" id="imageUpload" tabindex="-1" role="dialog"
-                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Image Upload</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="" method="post" enctype="multipart/form-data" novalidate>
-                                    {% csrf_token %}
-                                    {{ form|crispy }}
-                                    <button class="btn btn-sm btn-success">Upload</button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger" data-dismiss="modal">
-                                        Close
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             {% for image in images %}
             <div class="card mb-4">
                 <div class="card-title">
@@ -57,12 +28,12 @@
                             class="far fa-comment hearticon mx-auto" aria-hidden="true"></i>
                     </a></button>
                 </div>
-                <span class="ml-4 mb-1"><strong>{{image.likes.count}} like{{image.likes.count|pluralize}}</strong></span>
+                <span class="view"><strong>{{image.likes.count}} like{{image.likes.count|pluralize}}</strong></span>
                 <span class="text-secondary ml-4 viewall"><a href="{% url 'comment' image.id %}">view all {{image.comments.count}} comment{{image.comments.count|pluralize}}</a></span>
                 <div class="allcomments mb-4">
                     {% for comment in image.comments.all|slice:'2' %}
                     <div class="comment">
-                        <div class="ml-4"><strong>{{ comment.user.user.username }}</strong> <span
+                        <div class="pl-5"><strong>{{ comment.user.user.username }}</strong> <span
                                 class="text-secondary">{{ comment.comment }}</span>
                         </div>
                     </div>
@@ -80,14 +51,14 @@
                 </div>
                 <div class="col-md-6 mt-4 user-detail">
                     <span class=" text-secondary"><a
-                            href="{% url 'user_profile' user.username %}">{{ user.username }}</a></span> <br>
-                    <span class=" inname">{{ user.profile.name }}</span>
+                            href="{% url 'user_profile' user.username %}" class="user">{{ user.username }} </a></span> <br>
+                    <span class=" user">{{ user.profile.name }}</span>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-10">
-                    <div class="card mt-4 mr-2 ml-2">
-                        <div class="card-title text-secondary mt-2 mr-2 ml-2 ">Suggestions</div>
+            <div class="row sugg">
+                <div class="col-md-10 sugg">
+                    <div class="card mt-4 mr-2 ml-2 sugg">
+                        <div class="card-title text-secondary text-center">Suggestions</div>
                         {% for user in users %}
                         <div class="container">
                             <div class="row">
@@ -96,7 +67,7 @@
                                          width="45px" height="45px">
                                 </div>
                                 <div class="col-md-6 mr-2 mt-2">
-                                    <span><a href="{% url 'user_profile' user.username  %}">{{user.username}}</a></span>
+                                    <span ><a href="{% url 'user_profile' user.username  %}" class="user">{{user.username}}</a></span>
                                 </div>
                                 <div class="col-md-4">
                                 </div>
