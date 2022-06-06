@@ -5,11 +5,13 @@ from .models import Profile, Post, Comment
 
 
 class SignUpForm(UserCreationForm):
-    email = forms.EmailField(help_text='Required. Inform a valid email address.')
+    email = forms.EmailField(help_text='Required. Input a valid email address.')
 
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'password1', 'password2')
+    def __init__(self, *args, **kwargs):
+        super(SignUpForm, self).__init__(*args, **kwargs)
+
+        for fieldname in ['username', 'password1', 'password2']:
+            self.fields[fieldname].help_text = None
 
 
 class UpdateUserForm(forms.ModelForm):
@@ -24,6 +26,10 @@ class UpdateUserProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['name', 'location', 'profile_pic', 'bio']
+        help_texts = {
+            'name': None,
+            'email': None,
+        }
 
 
 class PostForm(forms.ModelForm):
