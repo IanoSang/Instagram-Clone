@@ -16,7 +16,7 @@
                         <div class="media-body">
                             <div class="account-heading"><span class="mr-3 text-secondary username">{{ user.username }}</span>
                                 <a class="btn btn-sm btn-outline-secondary mr-3" data-toggle="modal" data-target=".bd-example-modal-md"><strong>Edit Profile</strong></a>
-                                <a class="mt-3" data-toggle="modal" data-target="#ModalCenter"><i class="fa fa-cog mt-3" id="cog"></i></a>
+                                <a class="mt-3 ml-5" data-toggle="modal" data-target="#ModalCenter"><i class="fa fa-cog mt-3" id="cog"></i></a>
                             </div>
 
                             <div class="post-details mt-3 mb-3">
@@ -48,11 +48,13 @@
         <div class="modal fade bd-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-md ">
                 <div class="modal-content">
-                    <form action="" method="post" novalidate enctype="multipart/form-data" class="mr-4 mt-4 ml-4 mb-4">
+                    <form action="" method="post" novalidate enctype="multipart/form-data" class="m-5 sugg">
                         {% csrf_token%}
                         {{ user_form|crispy}}
                         {{ prof_form|crispy}}
                         <button type="submit" class="btn btn-primary btn-sm"> Update Profile</button>
+                        <button type="button" class="btn btn-sm btn-outline-danger" data-dismiss="modal">Close
+                        </button>
                     </form>
                 </div>
             </div>
@@ -60,18 +62,23 @@
     </div>
     <hr class="mt-4">
     <div class="card-columns">
-        {% for image in images %}
-            <div class="card">
-                <div class="card-body">
-                    <img src="{{image.image.url}}" alt="{{image.caption}}" class="card-img">
-                    <p id="overlay"class="text">
-                            <i class="fas fa-heart" style="color:white; font-size: 18"></i>
-                            <span style="color: white">{{image.likes.count}}</span>
-                             <i class="fas fa-comment ml-4" style="color: white"></i> <span style="color: white">{{image.comments.count}}</span></p>
+       <div class="row">
+            {% for image in images %}
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="{{image.image.url}}" alt="{{image.caption}}" class="card-img">
+                            <p id="overlay" class="text">
+                                    <i class="fas fa-heart" ></i>
+                                    <span style="color: black">{{image.likes.count}}</span>
+                                     <i class="fas fa-comment ml-4" ></i> <span style="color: blank">{{image.comments.count}}</span></p>
 
+                        </div>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+       </div>
+
     </div>
 </div>
 
