@@ -95,6 +95,6 @@ Whatsapp : +254790020740
 
 ## License
 
-[MIT License](https://github.com/IanoSang/Django-photo-gallery/blob/main/LICENSE)
+[MIT License](https://github.com/IanoSang/Instagram-Clone/blob/main/LICENSE)
 
 Copyright (c) 2022 Ian Sang
