@@ -3,7 +3,7 @@ from .forms import SignUpForm, UpdateUserProfileForm, UpdateUserForm, PostForm, 
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-from .models import Follow, Post, Profile
+from .models import Follow, Post, Profile, Likes
 from django.contrib.auth.models import User
 
 
@@ -139,11 +139,27 @@ def search_profile(request):
         results = Profile.search_profile(name)
         print(results)
         message = f'name'
-        params = {
+        context = {
             'results': results,
             'message': message
         }
-        return render(request, 'insta-pages/results.html', params)
+        return render(request, 'insta-pages/results.html', context)
     else:
         message = "You haven't searched for any image category"
     return render(request, 'insta-pages/results.html', {'message': message})
+
+
+def dislike(request, to_dislike):
+    if request.method == 'GET':
+        post2 = Post.objects.get(pk=to_dislike)
+        dislike_d = Likes.objects.filter(likes=request.post.image, like=post2)
+        dislike_d.delete()
+        return redirect('user_profile', post2.post.image)
+
+
+def like(request, to_like):
+    if request.method == 'GET':
+        post3 = Post.objects.get(pk=to_like)
+        likes_s = Likes(likes=request.post.image, deslike=post3)
+        likes_s.save()
+        return redirect('post', post3.post.image)
