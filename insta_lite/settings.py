@@ -15,6 +15,9 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config, Csv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,7 +45,8 @@ INSTALLED_APPS = [
 
     # OWN
     'app.apps.AppConfig',
-    'crispy_forms'
+    'crispy_forms',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -93,6 +97,12 @@ DATABASES = {
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
+# adding config
+cloudinary.config(
+    cloud_name="dpww3jwgm",
+    api_key="169963849674552",
+    api_secret="NYtdnq1Z7VdH8cs82mkaLWO5Pak",
+)
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
