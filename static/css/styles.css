@@ -1,10 +1,14 @@
-body{
-background: #FAFAFA;
-}
+html, body{
+        overflow-x: hidden;
+        background: #FAFAFA;
+    }
+
 .sugg{
 background: #FAFAFA;
 }
-
+form{
+background: white;
+}
 
 .user{
     text-decoration: none;
@@ -53,8 +57,10 @@ background: #FAFAFA;
 }
 .far, .fas{
     font-size: 20px;
-    color: black;
     padding: 10%
+}
+.fa-heart {
+ color: red;
 }
 .view, .viewall, .allcomments{
     margin-left: 5%;
