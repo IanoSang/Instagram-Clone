@@ -51,7 +51,7 @@ Users can sign up, login, view and post photos, search and follow other users.
 *****
 
 ## Live Link
-Or you can access the web application directly via this [LIVE LINK](https://gallery-galaxy.herokuapp.com/).
+Or you can access the web application directly via this [LIVE LINK](https://ianoinstalite.herokuapp.com/).
 
 *****
 
