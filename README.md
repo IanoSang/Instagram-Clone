@@ -19,6 +19,12 @@ Users can sign up, login, view and post photos, search and follow other users.
 * See your profile with all your pictures.
 * Follow other users and see their pictures on your timeline.
 * Like a picture and leave a comment on it.
+*****
+### App Layout
+<img width="1440" alt="Screenshot" src="https://github.com/IanoSang/Instagram-Clone/blob/main/static/images/insta1.png">
+<img width="1440" alt="Screenshot" src="https://github.com/IanoSang/Instagram-Clone/blob/main/static/images/insta2.png">
+<img width="1440" alt="Screenshot" src="https://github.com/IanoSang/Instagram-Clone/blob/main/static/images/insta3.png">
+<img width="1440" alt="Screenshot" src="https://github.com/IanoSang/Instagram-Clone/blob/main/static/images/insta4.png">
 
 ## SetUp Instruction
 
