@@ -99,9 +99,9 @@ DATABASES['default'].update(db_from_env)
 
 # adding config
 cloudinary.config(
-    cloud_name="dpww3jwgm",
-    api_key="169963849674552",
-    api_secret="NYtdnq1Z7VdH8cs82mkaLWO5Pak",
+    cloud_name=config("CLOUD_NAME"),
+    api_key=config("CLOUD_API_KEY"),
+    api_secret=config("CLOUD_API_SECRET"),
 )
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
