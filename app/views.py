@@ -3,8 +3,10 @@ from .forms import SignUpForm, UpdateUserProfileForm, UpdateUserForm, PostForm, 
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-from .models import Follow, Post, Profile, Likes
+from .models import Follow, Post, Profile
 from django.contrib.auth.models import User
+from django.http.response import Http404
+from django.urls.base import reverse
 
 
 # Create your views here.
@@ -149,17 +151,20 @@ def search_profile(request):
     return render(request, 'insta-pages/results.html', {'message': message})
 
 
-def dislike(request, to_dislike):
-    if request.method == 'GET':
-        post2 = Post.objects.get(pk=to_dislike)
-        dislike_d = Likes.objects.filter(likes=request.post.image, like=post2)
-        dislike_d.delete()
-        return redirect('user_profile', post2.post.image)
+def like_post(request, post_id):
+    post = Post.objects.get(pk=post_id)
+    is_liked = False
+    user = request.user.profile
+    try:
+        profile = Profile.objects.get(user=user.user)
+        print(profile)
 
-
-def like(request, to_like):
-    if request.method == 'GET':
-        post3 = Post.objects.get(pk=to_like)
-        likes_s = Likes(likes=request.post.image, deslike=post3)
-        likes_s.save()
-        return redirect('post', post3.post.image)
+    except Profile.DoesNotExist:
+        raise Http404()
+    if post.likes.filter(id=user.user.id).exists():
+        post.likes.remove(user.user)
+        is_liked = False
+    else:
+        post.likes.add(user.user)
+        is_liked = True
+    return HttpResponseRedirect(reverse('index'))
