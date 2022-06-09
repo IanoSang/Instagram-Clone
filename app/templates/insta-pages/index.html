@@ -21,7 +21,7 @@
                 </div>
                 <div class="iconic ml-2">
                     <button class="btn btn-sm" type="submit" name="image_id" value="{{image.id}}">
-                        <a href="#"><i class="far fa-heart hearticon mx-auto"
+                        <a href="{%url 'like_post' image.id %}"><i class="far fa-heart hearticon mx-auto"
                                                                   aria-hidden="true" style=""></i></a>
                     </button>
 
@@ -30,6 +30,7 @@
                     </a></button>
                 </div>
                 <span class="view"><strong>{{image.likes.count}} like{{image.likes.count|pluralize}}</strong></span>
+                <p class="blockquote-footer my-2"><b>{{image.user.user.username |title}}</b>  {{image.caption}}</p>
                 <span class="text-secondary ml-4 viewall"><a href="{% url 'comment' image.id %}">view all {{image.comments.count}} comment{{image.comments.count|pluralize}}</a></span>
                 <div class="allcomments mb-4">
                     {% for comment in image.comments.all|slice:'2' %}
